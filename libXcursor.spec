@@ -4,7 +4,7 @@
 #
 Name     : libXcursor
 Version  : 1.1.14
-Release  : 6
+Release  : 7
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libXcursor-1.1.14.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libXcursor-1.1.14.tar.gz
 Summary  : X Cursor Library
@@ -27,6 +27,7 @@ Xorg mailing list:
 Summary: dev components for the libXcursor package.
 Group: Development
 Requires: libXcursor-lib
+Provides: libXcursor-devel
 
 %description dev
 dev components for the libXcursor package.
@@ -52,10 +53,15 @@ lib components for the libXcursor package.
 %setup -q -n libXcursor-1.1.14
 
 %build
+export LANG=C
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
@@ -68,8 +74,8 @@ rm -rf %{buildroot}
 %files dev
 %defattr(-,root,root,-)
 /usr/include/X11/Xcursor/Xcursor.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libXcursor.so
+/usr/lib64/pkgconfig/xcursor.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -77,4 +83,5 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libXcursor.so.1
+/usr/lib64/libXcursor.so.1.0.2
