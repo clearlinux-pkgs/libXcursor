@@ -6,7 +6,7 @@
 #
 Name     : libXcursor
 Version  : 1.2.0
-Release  : 17
+Release  : 18
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libXcursor-1.2.0.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libXcursor-1.2.0.tar.gz
 Source99 : http://xorg.freedesktop.org/releases/individual/lib/libXcursor-1.2.0.tar.gz.sig
@@ -94,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557080787
+export SOURCE_DATE_EPOCH=1557107085
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -124,7 +124,7 @@ cd ../build32;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1557080787
+export SOURCE_DATE_EPOCH=1557107085
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libXcursor
 cp COPYING %{buildroot}/usr/share/package-licenses/libXcursor/COPYING
